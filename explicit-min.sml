@@ -1,5 +1,6 @@
 use "heap.sml";
 
+(* Exercise 18 *)
 functor ExplicitMin (Heap: HEAP): HEAP =
 struct
   structure Elem = Heap.Elem
