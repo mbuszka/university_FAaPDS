@@ -1,6 +1,6 @@
-#load "LzyStream.cmo";;
+open LzyStream
 
-type 'a tree_node = Node of 'a * 'a tree LzyStream.stream
+type 'a tree_node = Node of 'a * 'a tree stream
                   | Leaf
 and 'a tree = 'a tree_node Lazy.t
 

@@ -43,3 +43,13 @@ let rec map f str = lazy (
   | lazy Nil -> Nil
   | lazy (Cons (x, xs)) -> Cons (f x, map f xs)
 )
+
+(* let rec splice a b =
+  let rec stride forced b cont =
+    match forced with
+    | x::xs -> lazy (
+      match b with
+      | lazy (Cons (y, ys)) -> Cons ((x, y), stride xs ys (cont ())))
+      | lazy Nil            -> rest
+    | []                  -> rest
+  in let rec loop a forced b *)
