@@ -10,11 +10,11 @@ module MyLazy: MyLazy =
 struct
   type 'a susp_state = Thunk of (unit -> 'a)
                      | Value of 'a
-  type 'a t = { mutable state: 'a susp_state }
+  type 'a t = 'a susp_state ref
 
-  let delay f = { state = Thunk f }
+  let delay f = ref (Thunk f)
   let force r =
-    match r.state with
-    | Thunk f -> let x = f () in r.state <- Value x; x
+    match !r with
+    | Thunk f -> let x = f () in r := Value x; x
     | Value x -> x
 end
