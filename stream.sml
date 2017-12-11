@@ -9,6 +9,7 @@ sig
   val take: int * 'a Stream -> 'a Stream
   val drop: int * 'a Stream -> 'a Stream
   val reverse: 'a Stream -> 'a Stream
+  val slength: 'a Stream -> int
 end
 
 structure Stream : STREAM =
@@ -34,4 +35,9 @@ struct
       let fun reverse' ($Nil, r) = r
             | reverse' ($(Cons (x, s)), r) = reverse' (s, $(Cons (x, r)))
       in reverse' (str, $Nil) end
+
+  fun slength s =
+        let fun sl ($(Cons(_, s)), a) = sl (s, a + 1)
+              | sl ($Nil, a) = a
+        in sl (s, 0) end
 end
