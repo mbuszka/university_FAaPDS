@@ -99,7 +99,7 @@ Niezmiennik `Di <=L(i)`
 gdzie L(i) = liczba jedynek w prefiksie dł. i
 
 # Zadanie 7
-
+```
 type Nat = (Digit * bool) Stream * (Digit * bool) Stream list
 
 fun exec (job :: jobs) = case job of
@@ -116,6 +116,6 @@ fun inc1 ($Cons((Zero, _), ds)) = $Cons((One, true), ds)
   | inc1 ($Cons((One, _), ds))  = $Cons((Two, true), ds)
   | inc1 ($Cons((Two, _), ds))  = $Cons((One, false), inc1 ds)
   | inc1 $Nil                   = $Cone((One, true), $Nil)
-
+```
 
 Wykonujemy exec 2 razy co odpowiada spłaceniu 2 kredytów w schemacie amortyzacji. Flagi przy cyfrach mówią nam kiedy trzeba kontynuować wymuszanie.
